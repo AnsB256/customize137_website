@@ -1,0 +1,1897 @@
+/**
+ * ============================================================================
+ * CUSTOMIZE137 SYSTEMS LIMITED — GLOBAL STYLESHEET (`src/index.css`)
+ * ============================================================================
+ * Structured into logical architectural sections:
+ * 01. Base Reset & Typography Tokens
+ * 02. Sticky Navigation Bar & Brand Lockup
+ * 03. Shared Buttons & Status Indicators
+ * 04. Hero Section & Interactive System Map Pipeline
+ * 05. Telemetry Metrics Strip
+ * 06. Section 01: Core Capabilities (Pillar Cards)
+ * 07. Section 02: Unified C137 Core Architecture Diagram
+ * 08. Section 03: Selected Deployments (Portfolio Grid)
+ * 09. Case Study Detail Modal (`CaseStudyModal.tsx`)
+ * 10. Section 04: The Engineering Loop (Process Steps)
+ * 11. Section 05: The 137 Synergy
+ * 12. Section 06: Contact & Project Brief Inquiry Form
+ * 13. Site Footer
+ * 14. Responsive Breakpoints (<= 900px Tablet, <= 600px Mobile)
+ * ============================================================================
+ */
+
+@import "tailwindcss";
+
+/* ============================================================================
+   01. BASE RESET & TYPOGRAPHY TOKENS
+   ============================================================================ */
+:root {
+  font-family: 'Manrope', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  color: #f5f7fa;
+  background: #05070b;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background: #05070b;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+.site-shell {
+  overflow: hidden;
+  background: #05070b;
+}
+
+/* Shared flex row alignment utility */
+.brand-lockup,
+.nav-actions,
+.desktop-nav,
+.hero-actions,
+.hero-proof,
+.status,
+.eyebrow,
+.pipeline-meta,
+.pipeline-footer,
+.node-top,
+.section-header > div,
+.filter-row,
+.project-top,
+.footer-bottom {
+  display: flex;
+  align-items: center;
+}
+
+.brand-badge,
+.mono {
+  font-family: 'DM Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 9px;
+  letter-spacing: 0.12em;
+}
+
+/* ============================================================================
+   02. STICKY NAVIGATION BAR & BRAND LOCKUP
+   ============================================================================ */
+.navbar {
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 5vw;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: rgba(5, 7, 11, 0.86);
+  backdrop-filter: blur(18px);
+}
+
+.brand-lockup {
+  gap: 10px;
+  white-space: nowrap;
+}
+
+.brand-logo {
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: #0c111b;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+/* Crops 16:9 brand logo cards cleanly around the center circular emblem */
+.brand-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transform: scale(1.08);
+}
+
+.brand-logo svg {
+  width: 29px;
+  height: 29px;
+  object-fit: contain;
+}
+
+.brand-name {
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  font-size: 15px;
+}
+
+.brand-name span {
+  color: #14b8a6;
+}
+
+.brand-badge {
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #8c97a8;
+  border-radius: 4px;
+  padding: 4px 6px;
+  margin-left: 2px;
+}
+
+.desktop-nav {
+  gap: 6px;
+  margin-left: auto;
+  margin-right: 35px;
+}
+
+.desktop-nav a {
+  color: #8993a2;
+  font-size: 12px;
+  padding: 8px 11px;
+  border-radius: 5px;
+  transition: 0.2s;
+}
+
+.desktop-nav a:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.07);
+}
+
+/* Hidden on desktop (> 900px); shown inside mobile menu dropdown */
+.mobile-deploy {
+  display: none;
+  align-items: center;
+  gap: 6px;
+}
+
+.nav-actions {
+  gap: 18px;
+}
+
+.menu-toggle {
+  display: none;
+  background: none;
+  color: white;
+  border: 0;
+}
+
+/* ============================================================================
+   03. SHARED BUTTONS & STATUS INDICATORS
+   ============================================================================ */
+.status {
+  color: #7fd8b9;
+  font: 10px 'DM Mono', monospace;
+  gap: 7px;
+  white-space: nowrap;
+}
+
+.status i,
+.availability i,
+.live-dot {
+  width: 6px;
+  height: 6px;
+  display: inline-block;
+  border-radius: 50%;
+  background: #39d39b;
+  box-shadow: 0 0 12px #39d39b;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border-radius: 5px;
+  padding: 12px 16px;
+  font-size: 12px;
+  font-weight: 700;
+  transition: 0.2s;
+  border: 1px solid transparent;
+}
+
+.button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.button-light,
+.button-primary {
+  background: #f5f7fa;
+  color: #080b11;
+}
+
+.button-light:hover,
+.button-primary:hover {
+  background: #d7e5ed;
+  transform: translateY(-2px);
+}
+
+.button-light {
+  padding: 9px 13px;
+  font-size: 11px;
+}
+
+.button-ghost {
+  background: rgba(255, 255, 255, 0.025);
+  color: #e9edf2;
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.button-ghost:hover {
+  border-color: #14b8a6;
+  background: rgba(20, 184, 166, 0.08);
+}
+
+/* ============================================================================
+   04. HERO SECTION & INTERACTIVE SYSTEM MAP PIPELINE
+   ============================================================================ */
+.section-grid {
+  position: relative;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+  background-size: 74px 74px;
+}
+
+.hero {
+  min-height: 695px;
+  padding: 108px 8vw 92px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(460px, 0.94fr);
+  align-items: center;
+  gap: 5vw;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 30% 43%, rgba(14, 165, 233, 0.12), transparent 28%),
+    radial-gradient(circle at 80% 47%, rgba(249, 115, 22, 0.12), transparent 25%);
+  pointer-events: none;
+}
+
+.crosshair {
+  position: absolute;
+  color: #6a7584;
+  font: 18px 'DM Mono', monospace;
+}
+
+.crosshair-tl {
+  top: 34px;
+  left: 7vw;
+}
+
+.crosshair-tr {
+  top: 34px;
+  right: 7vw;
+}
+
+.hero-copy {
+  position: relative;
+  z-index: 1;
+}
+
+.eyebrow {
+  gap: 9px;
+  font: 10px 'DM Mono', monospace;
+  letter-spacing: 0.11em;
+  color: #aab4c2;
+}
+
+.eyebrow b {
+  color: #14b8a6;
+  font-weight: 400;
+}
+
+.hero h1 {
+  font-size: clamp(44px, 5.3vw, 82px);
+  line-height: 0.98;
+  letter-spacing: -0.07em;
+  max-width: 760px;
+  margin: 30px 0 27px;
+  font-weight: 700;
+}
+
+h1 em,
+h2 em,
+.why-content em,
+.contact-aside em {
+  color: #10b7a4;
+  font-style: normal;
+}
+
+.hero-lede {
+  color: #96a1b1;
+  max-width: 590px;
+  line-height: 1.75;
+  font-size: 15px;
+}
+
+.hero-actions {
+  gap: 11px;
+  margin-top: 35px;
+}
+
+.hero-proof {
+  gap: 18px;
+  margin-top: 28px;
+  color: #778393;
+  font: 10px 'DM Mono', monospace;
+}
+
+.hero-proof span {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.hero-proof svg {
+  color: #34c792;
+}
+
+/* Interactive 3-Node System Pipeline */
+.pipeline-wrap {
+  position: relative;
+  z-index: 1;
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  background: rgba(8, 13, 22, 0.7);
+  padding: 18px;
+  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.25);
+}
+
+.pipeline-meta,
+.pipeline-footer {
+  justify-content: space-between;
+  color: #768292;
+  font-size: 9px;
+}
+
+.pipeline-meta span:last-child {
+  color: #57d2b2;
+  font: 9px 'DM Mono', monospace;
+}
+
+.pipeline-meta i {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #57d2b2;
+  display: inline-block;
+  margin-right: 5px;
+}
+
+.pipeline {
+  position: relative;
+  display: grid;
+  gap: 10px;
+  margin: 21px 0;
+}
+
+.pipeline-node {
+  position: relative;
+  text-align: left;
+  border: 1px solid rgba(255, 255, 255, 0.11);
+  background: rgba(14, 20, 32, 0.72);
+  color: #f2f5f7;
+  border-radius: 3px;
+  padding: 16px;
+  transition: 0.25s;
+}
+
+.pipeline-node::after {
+  content: '';
+  position: absolute;
+  left: 25px;
+  bottom: -11px;
+  height: 10px;
+  border-left: 1px dashed #465366;
+}
+
+.pipeline-node:last-child::after {
+  display: none;
+}
+
+.pipeline-node:hover,
+.pipeline-node.selected {
+  background: #111c2c;
+  border-color: #4a637c;
+  transform: translateX(4px);
+}
+
+.node-top {
+  gap: 9px;
+  color: #9daaba;
+}
+
+.node-top svg {
+  color: #14b8a6;
+}
+
+.orange .node-top svg {
+  color: #f97316;
+}
+
+.blue .node-top svg {
+  color: #0ea5e9;
+}
+
+.node-number {
+  font: 11px 'DM Mono', monospace;
+  color: #677486;
+}
+
+.node-top .mono {
+  font-size: 9px;
+}
+
+.pipeline-node strong {
+  display: block;
+  font-size: 15px;
+  margin: 12px 0;
+  letter-spacing: -0.03em;
+}
+
+.node-details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 13px;
+  color: #8490a2;
+  font: 9px 'DM Mono', monospace;
+}
+
+.node-details span {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.node-details i {
+  width: 4px;
+  height: 4px;
+  background: #546276;
+  border-radius: 50%;
+}
+
+.pipeline-node.selected .node-details i {
+  background: #14b8a6;
+  box-shadow: 0 0 5px #14b8a6;
+}
+
+.pipeline-rail {
+  display: flex;
+  gap: 4px;
+  margin: 0 0 15px;
+}
+
+.pipeline-rail span {
+  height: 2px;
+  flex: 1;
+  background: linear-gradient(90deg, #14b8a6, #0ea5e9);
+}
+
+.pipeline-rail span:nth-child(2) {
+  background: #f97316;
+}
+
+.pipeline-footer a {
+  display: flex;
+  gap: 7px;
+  align-items: center;
+  color: #aab2c0;
+  transition: color 0.2s;
+}
+
+.pipeline-footer a:hover {
+  color: #14b8a6;
+}
+
+/* ============================================================================
+   05. TELEMETRY METRICS STRIP
+   ============================================================================ */
+.metrics-strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-block: 1px solid rgba(255, 255, 255, 0.09);
+  padding: 25px 8vw;
+  background: #080c13;
+}
+
+.metrics-strip > div {
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  padding-left: 25px;
+}
+
+.metrics-strip > div:first-child {
+  padding-left: 0;
+}
+
+.metrics-strip > div:last-child {
+  border: 0;
+}
+
+.metrics-strip strong {
+  display: block;
+  font-size: 26px;
+  letter-spacing: -0.06em;
+}
+
+.metrics-strip strong span {
+  font-size: 13px;
+  color: #14b8a6;
+}
+
+.metrics-strip div span {
+  display: block;
+  color: #697589;
+  font: 9px 'DM Mono', monospace;
+  margin-top: 5px;
+  letter-spacing: 0.08em;
+}
+
+/* ============================================================================
+   06. SECTION LAYOUT & CORE CAPABILITIES (PILLAR CARDS)
+   ============================================================================ */
+.section {
+  padding: 125px 8vw;
+  max-width: 1500px;
+  margin: auto;
+}
+
+.section-header {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr 1fr;
+  gap: 30px;
+  align-items: start;
+  margin-bottom: 55px;
+}
+
+.section-header > div {
+  gap: 13px;
+}
+
+.section-index {
+  font: 11px 'DM Mono', monospace;
+  color: #14b8a6;
+}
+
+.section-header h2 {
+  font-size: clamp(34px, 4vw, 55px);
+  line-height: 1.04;
+  letter-spacing: -0.07em;
+  margin: 0;
+  font-weight: 600;
+}
+
+.section-header p {
+  margin: 8px 0 0;
+  color: #7f8b9b;
+  line-height: 1.7;
+  font-size: 13px;
+  max-width: 330px;
+}
+
+.section-header.compact {
+  display: flex;
+  margin: 0;
+}
+
+.section-header.compact .eyebrow {
+  color: #14b8a6;
+}
+
+.pillar-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.pillar-card {
+  position: relative;
+  overflow: hidden;
+  padding: 25px;
+  background: #0b111c;
+  min-height: 570px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.pillar-card:hover {
+  background: #0e1624;
+}
+
+.pillar-card:focus-visible {
+  outline: 2px solid #14b8a6;
+  outline-offset: -2px;
+}
+
+.pillar-card:hover .card-arrow {
+  background: #e8f1f3;
+  color: #071018;
+}
+
+.card-glow {
+  position: absolute;
+  top: -100px;
+  left: 15%;
+  width: 70%;
+  height: 160px;
+  background: radial-gradient(ellipse, rgba(14, 165, 233, 0.18), transparent 70%);
+  opacity: 0.7;
+}
+
+.orange .card-glow {
+  background: radial-gradient(ellipse, rgba(249, 115, 22, 0.17), transparent 70%);
+}
+
+.teal .card-glow {
+  background: radial-gradient(ellipse, rgba(20, 184, 166, 0.17), transparent 70%);
+}
+
+.pillar-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.pillar-top .mono {
+  color: #798697;
+  font-size: 9px;
+}
+
+.card-arrow {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 50%;
+  color: #96a3b2;
+  transition: 0.2s;
+}
+
+.pillar-card h3 {
+  font-size: 23px;
+  line-height: 1.1;
+  letter-spacing: -0.05em;
+  max-width: 260px;
+  margin: 32px 0 13px;
+}
+
+.pillar-card > p {
+  font-size: 12px;
+  line-height: 1.65;
+  color: #7f8a9b;
+  max-width: 300px;
+  min-height: 58px;
+}
+
+.preview {
+  height: 150px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: #080d15;
+  margin: 25px 0 22px;
+  padding: 15px;
+  position: relative;
+  overflow: hidden;
+}
+
+.terminal-top {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding-bottom: 10px;
+  margin-bottom: 12px;
+}
+
+.terminal-top span {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #e46f64;
+}
+
+.terminal-top span:nth-child(2) {
+  background: #e5b35a;
+}
+
+.terminal-top span:nth-child(3) {
+  background: #4fca91;
+}
+
+.terminal-top b {
+  font: 9px 'DM Mono', monospace;
+  color: #768597;
+  margin-left: 7px;
+  font-weight: 400;
+}
+
+.preview code {
+  font: 10px 'DM Mono', monospace;
+  line-height: 2;
+  color: #96a2b1;
+}
+
+.preview code i {
+  font-style: normal;
+  color: #4fd19d;
+}
+
+.preview code span {
+  color: #607286;
+}
+
+.chip-visual {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 13px;
+  margin-bottom: 10px;
+  color: #f97316;
+}
+
+.chip-visual span {
+  font: 10px 'DM Mono', monospace;
+  color: #b4beca;
+}
+
+.chip-visual span:nth-of-type(2) {
+  color: #5bd2bb;
+}
+
+.swatches {
+  display: flex;
+  gap: 5px;
+}
+
+.swatches i {
+  width: 40px;
+  height: 40px;
+  background: #14b8a6;
+}
+
+.swatches i:nth-child(2) {
+  background: #0ea5e9;
+}
+
+.swatches i:nth-child(3) {
+  background: #f97316;
+}
+
+.swatches i:nth-child(4) {
+  background: #f1f3f5;
+}
+
+.bezier {
+  display: flex;
+  justify-content: space-between;
+  color: #5d7180;
+  font-size: 15px;
+  margin-top: 8px;
+}
+
+.deliverables {
+  display: grid;
+  gap: 8px;
+}
+
+.deliverables span {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 10px;
+  color: #9da8b5;
+}
+
+.deliverables svg {
+  color: #37c595;
+}
+
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 20px;
+}
+
+.tag-list span {
+  font: 9px 'DM Mono', monospace;
+  color: #8491a2;
+  border: 1px solid rgba(255, 255, 255, 0.11);
+  padding: 5px 7px;
+  border-radius: 3px;
+}
+
+/* ============================================================================
+   07. SECTION 02: UNIFIED C137 CORE ARCHITECTURE DIAGRAM
+   ============================================================================ */
+.architecture-section {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.architecture-diagram {
+  min-height: 330px;
+  border: 1px solid rgba(255, 255, 255, 0.11);
+  display: grid;
+  grid-template-columns: 1fr 1.2fr 1fr;
+  align-items: center;
+  background:
+    radial-gradient(circle at center, rgba(14, 165, 233, 0.08), transparent 30%),
+    linear-gradient(90deg, transparent 49.9%, rgba(255, 255, 255, 0.08) 50%, transparent 50.1%);
+  position: relative;
+}
+
+.architecture-diagram::before,
+.architecture-diagram::after {
+  content: '+';
+  position: absolute;
+  color: #687686;
+  font: 15px 'DM Mono', monospace;
+}
+
+.architecture-diagram::before {
+  top: 12px;
+  left: 15px;
+}
+
+.architecture-diagram::after {
+  bottom: 12px;
+  right: 15px;
+}
+
+.diagram-side {
+  display: grid;
+  gap: 18px;
+  padding: 25px 12%;
+  border-right: 1px dashed rgba(255, 255, 255, 0.13);
+}
+
+.diagram-side.right {
+  border: 0;
+  border-left: 1px dashed rgba(255, 255, 255, 0.13);
+}
+
+.diagram-side .mono {
+  color: #14b8a6;
+}
+
+.diagram-side b {
+  font-size: 13px;
+  font-weight: 500;
+  color: #bac4ce;
+}
+
+.diagram-core {
+  text-align: center;
+}
+
+.core-ring {
+  margin: auto;
+  display: grid;
+  place-items: center;
+  width: 145px;
+  height: 145px;
+  border: 1px dashed #1ba892;
+  border-radius: 50%;
+  box-shadow: 0 0 55px rgba(20, 184, 166, 0.13);
+  position: relative;
+}
+
+.core-ring::before {
+  content: '';
+  position: absolute;
+  width: 95px;
+  height: 95px;
+  border: 1px solid rgba(14, 165, 233, 0.3);
+  border-radius: 50%;
+}
+
+.core-ring span {
+  font: 26px 'DM Mono', monospace;
+  color: #f97316;
+  z-index: 1;
+}
+
+.core-label {
+  margin-top: 18px;
+}
+
+.core-label .mono {
+  color: #14b8a6;
+}
+
+.core-label b {
+  display: block;
+  font-size: 17px;
+  line-height: 1.2;
+  margin-top: 7px;
+}
+
+/* ============================================================================
+   08. SECTION 03: SELECTED DEPLOYMENTS (PORTFOLIO GRID)
+   ============================================================================ */
+.filter-row {
+  gap: 8px;
+  margin-bottom: 27px;
+  flex-wrap: wrap;
+}
+
+.filter-row button {
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  background: transparent;
+  color: #7f8b9a;
+  border-radius: 4px;
+  padding: 9px 12px;
+  font: 10px 'DM Mono', monospace;
+  transition: 0.2s;
+}
+
+.filter-row button:hover,
+.filter-row button.active {
+  background: #eaf1f3;
+  color: #0a1018;
+  border-color: #eaf1f3;
+}
+
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.project-card {
+  position: relative;
+  min-height: 268px;
+  padding: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: #0a1019;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.project-card:hover {
+  border-color: rgba(20, 184, 166, 0.55);
+  transform: translateY(-3px);
+  background: #0d1522;
+}
+
+.project-card:focus-visible {
+  outline: 2px solid #14b8a6;
+  outline-offset: -2px;
+}
+
+.project-top {
+  justify-content: space-between;
+}
+
+.project-top .mono {
+  color: #687587;
+}
+
+.division-dot {
+  font: 9px 'DM Mono', monospace;
+  color: #63bee0;
+}
+
+.division-dot.orange {
+  color: #f49a54;
+}
+
+.division-dot.teal {
+  color: #48ccb9;
+}
+
+.project-card h3 {
+  font-size: 16px;
+  line-height: 1.25;
+  letter-spacing: -0.035em;
+  margin: 27px 26px 11px 0;
+}
+
+.project-card p {
+  color: #7d8999;
+  font-size: 11px;
+  line-height: 1.55;
+  max-width: 290px;
+}
+
+.project-bottom {
+  position: absolute;
+  left: 22px;
+  right: 22px;
+  bottom: 20px;
+}
+
+.project-metric-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.project-bottom strong {
+  font: 11px 'DM Mono', monospace;
+  color: #d1d9e1;
+}
+
+.case-study-hint {
+  color: #14b8a6;
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: 0.2s;
+}
+
+.project-card:hover .case-study-hint,
+.project-card:focus-visible .case-study-hint {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.project-bottom .tag-list {
+  margin-top: 10px;
+}
+
+.project-arrow {
+  position: absolute;
+  right: 20px;
+  top: 66px;
+  color: #667486;
+  transition: color 0.2s, transform 0.2s;
+}
+
+.project-card:hover .project-arrow {
+  color: #14b8a6;
+  transform: translate(2px, -2px);
+}
+
+/* ============================================================================
+   09. CASE STUDY DETAIL MODAL (`CaseStudyModal.tsx`)
+   ============================================================================ */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  background: rgba(3, 5, 9, 0.82);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  overflow-y: auto;
+}
+
+.modal-panel {
+  width: 100%;
+  max-width: 780px;
+  max-height: 90vh;
+  overflow-y: auto;
+  background: #09101a;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-top: 3px solid #0ea5e9;
+  padding: 32px;
+  box-shadow: 0 35px 100px rgba(0, 0, 0, 0.65);
+  position: relative;
+}
+
+.modal-panel.orange {
+  border-top-color: #f97316;
+}
+
+.modal-panel.teal {
+  border-top-color: #14b8a6;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 16px;
+  margin-bottom: 22px;
+}
+
+.modal-meta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.modal-meta .mono {
+  color: #8492a4;
+}
+
+.modal-close {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #aab5c4;
+  width: 34px;
+  height: 34px;
+  border-radius: 5px;
+  display: grid;
+  place-items: center;
+  transition: 0.2s;
+}
+
+.modal-close:hover {
+  color: #fff;
+  border-color: #14b8a6;
+}
+
+.modal-title {
+  font-size: clamp(22px, 2.6vw, 30px);
+  letter-spacing: -0.04em;
+  line-height: 1.15;
+  margin: 0 0 10px;
+}
+
+.modal-summary {
+  color: #8d9aa9;
+  font-size: 13px;
+  line-height: 1.65;
+  margin: 0 0 22px;
+}
+
+.modal-kpi-strip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  background: #060a11;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 16px;
+  margin-bottom: 22px;
+}
+
+.modal-kpi-strip .mono {
+  display: block;
+  color: #6b798b;
+  margin-bottom: 6px;
+}
+
+.modal-kpi-strip strong {
+  font-size: 14px;
+  color: #eef3f7;
+  letter-spacing: -0.02em;
+}
+
+.modal-body-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  margin-bottom: 22px;
+}
+
+.modal-block {
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  background: rgba(12, 19, 30, 0.65);
+  padding: 18px;
+}
+
+.modal-block .mono {
+  color: #14b8a6;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.modal-block p {
+  margin: 0;
+  color: #98a4b3;
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.modal-lists-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  margin-bottom: 24px;
+}
+
+.modal-list-box {
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  background: #070c14;
+  padding: 18px;
+}
+
+.modal-list-heading {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #14b8a6;
+  margin-bottom: 14px;
+}
+
+.modal-list-box ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 10px;
+}
+
+.modal-list-box li {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 11px;
+  line-height: 1.5;
+  color: #b4c0ce;
+}
+
+.modal-list-box li svg {
+  color: #37c595;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 20px;
+  flex-wrap: wrap;
+}
+
+.modal-footer .tag-list {
+  margin-top: 0;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 10px;
+}
+
+/* ============================================================================
+   10. SECTION 04: THE ENGINEERING LOOP (PROCESS STEPS)
+   ============================================================================ */
+.process-section {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.process-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.process-card {
+  background: #0b111a;
+  padding: 25px;
+  min-height: 270px;
+}
+
+.step-number {
+  font: 25px 'DM Mono', monospace;
+  color: #14b8a6;
+}
+
+.step-line {
+  height: 1px;
+  background: linear-gradient(90deg, #14b8a6, transparent);
+  margin: 23px 0;
+}
+
+.process-card .mono {
+  color: #738194;
+  font-size: 9px;
+}
+
+.process-card h3 {
+  font-size: 17px;
+  letter-spacing: -0.04em;
+  margin: 17px 0 10px;
+}
+
+.process-card p {
+  color: #7e8999;
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+/* ============================================================================
+   11. SECTION 05: THE 137 SYNERGY
+   ============================================================================ */
+.why-section {
+  position: relative;
+  display: grid;
+  grid-template-columns: 0.75fr 1.5fr 0.9fr;
+  gap: 40px;
+  padding: 125px 8vw;
+  background: #09121b;
+  border-block: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.why-glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 47% 50%, rgba(20, 184, 166, 0.12), transparent 36%);
+  pointer-events: none;
+}
+
+.why-content,
+.why-signals,
+.why-section .section-header {
+  position: relative;
+}
+
+.why-content h2 {
+  font-size: clamp(34px, 4vw, 56px);
+  line-height: 1.03;
+  letter-spacing: -0.07em;
+  margin: 0;
+}
+
+.why-content p {
+  color: #8490a0;
+  font-size: 13px;
+  line-height: 1.75;
+  max-width: 440px;
+  margin: 25px 0;
+}
+
+.text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #d9e8ed;
+  font: 11px 'DM Mono', monospace;
+  border-bottom: 1px solid #14b8a6;
+  padding-bottom: 7px;
+}
+
+.why-signals {
+  display: grid;
+  gap: 14px;
+  align-content: center;
+}
+
+.why-signals > div {
+  border-left: 1px solid #14b8a6;
+  padding: 7px 0 7px 16px;
+  display: grid;
+  grid-template-columns: 28px 1fr;
+  align-items: center;
+}
+
+.why-signals svg {
+  grid-row: span 2;
+  color: #14b8a6;
+}
+
+.why-signals b {
+  font-size: 13px;
+}
+
+.why-signals span {
+  font-size: 10px;
+  color: #7f8a99;
+  margin-top: 4px;
+}
+
+/* ============================================================================
+   12. SECTION 06: CONTACT & PROJECT BRIEF INQUIRY FORM
+   ============================================================================ */
+.contact-section {
+  padding-bottom: 130px;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 0.75fr 1.25fr;
+  gap: 80px;
+}
+
+.availability {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: #54d0ac;
+  font: 10px 'DM Mono', monospace;
+  border: 1px solid rgba(84, 208, 172, 0.3);
+  padding: 8px 10px;
+}
+
+.availability span {
+  color: #718091;
+  margin-left: 5px;
+}
+
+.contact-aside h3 {
+  font-size: 35px;
+  line-height: 1.08;
+  letter-spacing: -0.06em;
+  margin: 33px 0 17px;
+}
+
+.contact-aside > p {
+  color: #7d8999;
+  font-size: 13px;
+  line-height: 1.7;
+  max-width: 270px;
+}
+
+.contact-details {
+  display: grid;
+  gap: 13px;
+  margin-top: 40px;
+  color: #91a0b0;
+  font-size: 11px;
+}
+
+.contact-details a {
+  color: #dce7eb;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.contact-details .mono {
+  color: #647487;
+  font-size: 8px;
+}
+
+.inquiry-form {
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  padding: 25px;
+  background: #09101a;
+}
+
+.form-heading {
+  display: flex;
+  justify-content: space-between;
+  color: #14b8a6;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 18px;
+  margin-bottom: 22px;
+}
+
+.form-heading span:last-child {
+  color: #687688;
+  font: 9px 'DM Mono', monospace;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+label,
+fieldset legend {
+  display: grid;
+  gap: 8px;
+  color: #909baa;
+  font: 10px 'DM Mono', monospace;
+  margin-bottom: 17px;
+}
+
+.optional {
+  color: #536174;
+}
+
+input,
+textarea,
+select {
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  background: #070c13;
+  color: #e3eaf0;
+  border-radius: 3px;
+  padding: 11px;
+  font-size: 11px;
+  outline: none;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: #14b8a6;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #4d5b6c;
+}
+
+select {
+  appearance: none;
+}
+
+fieldset {
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+
+fieldset legend {
+  padding: 0;
+}
+
+.service-toggles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 17px;
+}
+
+.service-toggles button {
+  display: inline-flex;
+  gap: 6px;
+  align-items: center;
+  padding: 9px 10px;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  color: #788698;
+  border-radius: 3px;
+  font: 10px 'DM Mono', monospace;
+}
+
+.service-toggles button.selected {
+  color: #dff8ef;
+  border-color: #14b8a6;
+  background: rgba(20, 184, 166, 0.1);
+}
+
+.submit-button {
+  width: 100%;
+  margin-top: 3px;
+}
+
+.success-state {
+  text-align: center;
+  padding: 55px 20px;
+}
+
+.success-state > svg {
+  color: #42d39f;
+  margin: 0 auto 18px;
+}
+
+.success-state .mono {
+  color: #42d39f;
+}
+
+.success-state h3 {
+  font-size: 30px;
+  letter-spacing: -0.05em;
+  margin: 15px 0 8px;
+}
+
+.success-state p {
+  color: #7f8b9c;
+  font-size: 12px;
+  margin: 0 auto 25px;
+  max-width: 340px;
+  line-height: 1.6;
+}
+
+.success-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+/* ============================================================================
+   13. SITE FOOTER
+   ============================================================================ */
+.footer {
+  padding: 62px 8vw 25px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  background: #070a10;
+}
+
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer-top > div:first-child p {
+  color: #7f8b9b;
+  font-size: 12px;
+  line-height: 1.6;
+  margin: 17px 0;
+}
+
+.footer-links {
+  display: flex;
+  gap: 90px;
+}
+
+.footer-links > div {
+  display: grid;
+  gap: 12px;
+  align-content: start;
+}
+
+.footer-links .mono {
+  color: #14b8a6;
+  margin-bottom: 5px;
+}
+
+.footer-links a {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: #8b96a5;
+  font-size: 11px;
+}
+
+.footer-links a:hover {
+  color: white;
+}
+
+.footer-bottom {
+  justify-content: space-between;
+  border-top: 1px solid rgba(255, 255, 255, 0.09);
+  padding-top: 20px;
+  margin-top: 45px;
+  color: #5c6979;
+  font: 9px 'DM Mono', monospace;
+}
+
+.footer-bottom .status {
+  font-size: 9px;
+}
+
+.footer-bottom .mono {
+  font-size: 9px;
+}
+
+/* ============================================================================
+   14. RESPONSIVE BREAKPOINTS
+   ============================================================================ */
+@media (max-width: 900px) {
+  .navbar {
+    padding: 0 5vw;
+  }
+  .desktop-nav {
+    display: none;
+  }
+  .desktop-nav.mobile-open {
+    display: flex;
+    position: absolute;
+    top: 71px;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 15px 5vw;
+    background: #080d15;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  .desktop-nav.mobile-open a {
+    padding: 14px;
+  }
+  .mobile-deploy {
+    display: flex !important;
+  }
+  .nav-cta {
+    display: none;
+  }
+  .menu-toggle {
+    display: block;
+  }
+  .hero {
+    grid-template-columns: 1fr;
+    padding-top: 90px;
+  }
+  .pipeline-wrap {
+    max-width: 650px;
+  }
+  .section-header {
+    grid-template-columns: 1fr 1.6fr;
+  }
+  .section-header p {
+    grid-column: 2;
+  }
+  .pillar-grid,
+  .portfolio-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .pillar-card:last-child {
+    grid-column: 1 / -1;
+  }
+  .process-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .why-section {
+    grid-template-columns: 1fr 1.7fr;
+  }
+  .why-signals {
+    grid-column: 2;
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .contact-grid {
+    gap: 40px;
+  }
+  .modal-body-grid,
+  .modal-lists-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .brand-badge,
+  .status {
+    display: none;
+  }
+  .hero {
+    padding: 80px 5vw 60px;
+    min-height: auto;
+  }
+  .hero h1 {
+    font-size: 48px;
+  }
+  .hero-actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+  .hero-actions .button {
+    width: 100%;
+  }
+  .hero-proof {
+    display: grid;
+    gap: 10px;
+  }
+  .metrics-strip {
+    grid-template-columns: 1fr 1fr;
+    padding: 20px 5vw;
+    gap: 20px;
+  }
+  .metrics-strip > div {
+    border: 0;
+    padding: 0;
+  }
+  .section {
+    padding: 82px 5vw;
+  }
+  .section-header {
+    display: block;
+    margin-bottom: 35px;
+  }
+  .section-header h2 {
+    margin: 20px 0 15px;
+  }
+  .section-header p {
+    max-width: 100%;
+  }
+  .pillar-grid,
+  .portfolio-grid,
+  .process-grid {
+    grid-template-columns: 1fr;
+  }
+  .pillar-card:last-child {
+    grid-column: auto;
+  }
+  .pillar-card {
+    min-height: auto;
+  }
+  .architecture-diagram {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    padding: 30px 0;
+  }
+  .diagram-side {
+    grid-template-columns: repeat(3, 1fr);
+    border: 0 !important;
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.13) !important;
+    padding: 0 20px 25px;
+  }
+  .diagram-side.right {
+    border: 0 !important;
+    border-top: 1px dashed rgba(255, 255, 255, 0.13) !important;
+    padding: 25px 20px 0;
+  }
+  .diagram-side b {
+    font-size: 10px;
+  }
+  .why-section {
+    display: block;
+    padding: 82px 5vw;
+  }
+  .why-content {
+    margin: 40px 0;
+  }
+  .why-signals {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+  .footer {
+    padding: 50px 5vw 20px;
+  }
+  .footer-top {
+    display: block;
+  }
+  .footer-links {
+    margin-top: 35px;
+    gap: 50px;
+  }
+  .footer-bottom {
+    display: grid;
+    gap: 14px;
+  }
+  .inquiry-form {
+    padding: 18px;
+  }
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+  .pipeline-node {
+    padding: 14px;
+  }
+  .node-details {
+    display: grid;
+  }
+  .hero .crosshair {
+    display: none;
+  }
+  .modal-panel {
+    padding: 20px;
+  }
+  .modal-kpi-strip {
+    grid-template-columns: 1fr;
+  }
+  .modal-actions {
+    width: 100%;
+    flex-direction: column;
+  }
+  .modal-actions .button {
+    width: 100%;
+  }
+}
